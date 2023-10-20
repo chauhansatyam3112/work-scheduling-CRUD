@@ -1,0 +1,69 @@
+<!-- list.ejs contains all the html files we try to render -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- C:\Users\satyam\TodoList\public\css
+    C:\Users\satyam\TodoList\public\css\styles.css -->
+   <div class="box" id="heading"> 
+    <h1><%= ListTitle %></h1>
+
+   </div>
+
+   <div class="box">
+    <!-- <ul> -->
+        <!-- rather than making one by one list we can store these starting todos into array -->
+        <!-- <li>wake up</li>
+        <li>solve lc</li>
+        <li>watch BBT</li> -->
+
+
+        <!-- create new list item by using ejs; -->
+        <!-- when we provide it from post it tap into from that and update
+        the list -->
+
+        <!-- we pass the data from webpage to server then we need to pass back it to server -->
+        <!-- so newItem we upadte it in real time -->
+      
+       <% for(var i=0;i<newItems.length;i++){ %> 
+        <form action="/delete" method="post">
+        <div class="item"> 
+            <input type="checkbox" name="checkbox" value="<%=newItems[i]._id%>" onChange="this.form.submit()">
+            <p> <%= newItems[i].name %></p>
+        </div>
+
+    </form>
+        
+          
+
+        <%}%>
+        <form  class="item" action="/"  method="post" >
+            <input type="text" name="newItem" placeholder="New Item"  autocomplete="off">
+            <button type="submit" name="satyam" value="<%=ListTitle %>">+</button>
+          </form>
+
+          
+          <!-- <form class="item" action="/customListName " method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="satyam" value=" ListTitle ">+</button>
+        </form> -->
+        
+       
+
+      <!-- </ul> -->
+   </div>
+      
+     
+
+     
+    
+    
+    
+</body>
+</html>

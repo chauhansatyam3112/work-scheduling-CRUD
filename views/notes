@@ -1,0 +1,97 @@
+ <!-- here we are putting ejs template marker -->
+
+    <!-- what we try to actually show repeatedly -->
+    <!-- {key:"value"}; -->
+    <!-- so repleacing  weekned with ejs key  -->
+
+    <!-- <%  %>  this is a ejs tag to use in control flow statement -->
+
+    <!--  <% if(kindofDay==="Saturday" || kindofDay==="Sunday"){ %> -->
+
+        <!-- <h1 style="color:purple"> It's a <%=kindofDay%> To Do List! </h1> -->
+
+    <!-- <!<%}else{%> -->
+        <!-- <h1 style="color:cyan"> It's a <%=kindofDay%> To Do List! </h1>  -->
+
+   <!-- <%}%> -->
+
+since the item only stores a single item
+so create array
+
+Now if we take a look at the console you can see that what we've logged is a key called newItem that
+
+has the value of the item that we just added. But there's also this key called button and that relates to
+
+the name that we gave our submit button.
+
+It has a name of button.
+
+Now we can also give it a value.
+
+And if I give it a value let's just call it 'a value',
+
+if I go through this process again of adding a new item, you can see that what gets printed in our console
+
+is there is a key code button and it has a value of 'a value' which is what we added in here.
+
+So what we can do then is we can change the name of our submit button to list and we can change the
+
+value to something dynamic using EJS.
+
+So we can say the value is equal to something dynamic that we're going to insert here
+
+and we can change this to the list title.
+
+That's the thing that we're getting from the server that we're going to put at the top of our list as
+
+the title.
+
+So now when I hit save and we try this again, we go over to /work,
+
+we add a new item
+
+then you can see that we can tap into something that's called list and we can get it's valued to figure
+
+out whether if our newItem was added in the work list or whether it was added in our default list.
+
+So now going back to our server, we can instead of console logging what we're getting from the request
+
+.body, we can create an IF statement. So we can say if request.body.list
+
+so remember that's the key over here so that we can tap into this value.
+
+If this is equal to the word work then in that case instead of pushing our items into the array items
+
+we're going to push it into our new array which is called to workItems.
+
+So let's first place this above our IF statement so we grab the item from the post request and if that
+
+request came from our work list then we're going to say workItems.push and we're going to push
+
+the item to that list instead.
+
+Now else, if it wasn't from the worklist, then we're going to push it to our normal items array and we'll
+
+going into res.redirect to our home route.
+
+But if it was in fact from the workList then we're going to res.redirect to our work route.
+
+So now in our app.post method we've got some logic in here that checks to see if the list that the
+
+new item came from was from the worklist and if it was then we're going to at that data item to the
+
+work items array
+
+and we're going to redirect to over here for the work route where we're going to render our list
+
+that is the work list from the work items.
+
+So now if we hit save and we head over to the worklist and we add a new item say 'Write essay', now it gets
+
+added to our worklist and we have two separate lists now that operate independently from each other
+
+because we were able to implement some logic on our server that separates out the data.
+
+Now this is all very well and good and allows us to reuse a list.ejs template for as many different
+
+lists as we want to create.
